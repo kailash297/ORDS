@@ -1,0 +1,31 @@
+Environment Variables:
+Windows10 64-bit Operating System, x64 based processor
+Oracle Database Express Edition (XE) Release 11.2.0.2.0 (11gR2)
+Oracle SQL Developer Ver 4.2.0.17.089 (Build 17.089.1709)
+Java Virtual Machine 1.8.0_191-1-redhat-b12 
+Apache Tomcat Ver 9.0.16
+
+Instructions:
+1.Installation of DB
+Visit Oracle downloads website, and download Oracle XE Database. During Installation, make a note of user 'SYS as SYSDBA'. Make a note of this, as this will be needed in subsquent steps like when you want to install latest version of ORDS (19.1.0). When Oracle XE is downloaded, APEX will be available by default and this will not be needed for ORDS installation. Make a note that when Oracle DB is installaed, Port Number 8080 is earmarked.
+
+2.Installation of SQL Developer
+ORDS can also be configured in the Database using Command Line, but this tutorial focuses on ORDS Configuration and Development using SQL Developer as it offers GUI based configuration. Visit Oracle downloads website, and download SQL Developer (The version at this time was Ver 4.2.0.17.089). JVM is a pre-requisite for SQL Installation, and hence ensure its available. Oracle SQL Developer by default, will have ORDS Ver 3.0.9.348.0716 prebuilt, and this will be used for this demo.
+
+3.Installation of ORDS
+When installing ORDS, there are 2 options. Either use ORDS Ver 3.0.9.348.0716 prebuilt, or use the downloaded latest ORDS Ver 19.1.0. For initial config, use the pre-built, as it can launched with very minimal steps (in two clicks).
+During Installtion of ORDS using SQL Developer, change the defaulted port from 8080 to 8081. Start ORDS in standalone mode, and check whether http://localhost:8081/ords entered in a browser is showing as '404 Not Found', to confirm that ORDS is running correct in Standalone mode.
+Since we are not using APEX, do not enter any details for user id or schema starting with APEX%. User id listener admin should be entered last.
+
+4.Installation of Web Server
+Download TomCat Apache and during installation make a note of admin user id and password, which will be needed for later manager console access. Chose the Port as 8088 (As 8080 earmarked for Oracle DB and 8081 for ORDS).
+Chose the correct path of Java Virtual Machine, i.e. file location of jvm.dll should be valid. Upon verifying that ORDS Standalone mode is working, make a copy of ords.war that is residing in the SQL Developer Directory and paste in the webapps folder of Tomcat.Launch Tomcat Web Application Manager and ensure that under applications, ords is reflected. Upon clicking /ords, it should display Error 404, to confirm that ORDS is running correct in Tomcat Server mode.
+
+5.REST Development using SQL Developer
+Launch SQL Developer, and connect to the Oracle XE database.under Tools>REST Data Services, run it.
+Under Tools>REST Data Services> Run ORDS
+Confirm standalone ORDS is running by entering http://localhost:8081/ords in the browser which should return Error 404.
+At Schema level, and table level, enable REST
+Drill down Oracle database to select 'REST Data Services'
+Start creating Modules and test them.
+Upon completing, check them by Validating and the constructed path in the browser like http://localhost:8081/ords/oraclexe/emp/sales.
