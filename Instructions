@@ -27,5 +27,5 @@ Under Tools>REST Data Services> Run ORDS
 Confirm standalone ORDS is running by entering http://localhost:8081/ords in the browser which should return Error 404.
 At Schema level, and table level, enable REST
 Drill down Oracle database to select 'REST Data Services'
-Start creating Modules and test them.
-Upon completing, check them by Validating and the constructed path in the browser like http://localhost:8081/ords/oraclexe/emp/sales.
+Start creating Modules and test them. To fetch records, use GET and to insert records, use POST.
+Upon completing, check them by Validating and emter the constructed path in the browser like http://localhost:8081/ords/oraclexe/emp/sales.
